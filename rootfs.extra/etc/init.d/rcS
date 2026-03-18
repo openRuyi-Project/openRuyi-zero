@@ -1,5 +1,6 @@
 #!/bin/sh
 echo "Welcome to openRuyi" >&2
 hostname "$(cat /etc/hostname)"
-mdevd -C -O 4 &
-disown
+[ -d "/lib/modules/$(uname -r)" ] && mdevd -C -O 4 &
+jobs
+disown -r
