@@ -1,0 +1,5 @@
+#!/bin/sh
+echo "Welcome to openRuyi" >&2
+hostname "$(cat /etc/hostname)"
+mdevd -C -O 4 &
+disown

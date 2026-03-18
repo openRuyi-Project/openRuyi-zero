@@ -1,0 +1,6 @@
+proc /proc proc X-mount.mkdir
+sysfs /sys sysfs X-mount.mkdir
+tmpfs /tmp tmpfs X-mount.mkdir
+tmpfs /run/user/0 tmpfs X-mount.mkdir,uid=0,gid=0,mode=700
+devtmpfs /dev devtmpfs X-mount.mkdir
+devpts /dev/pts devpts X-mount.mkdir

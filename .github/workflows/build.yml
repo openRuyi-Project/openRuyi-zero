@@ -1,0 +1,26 @@
+name: Build image
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: fedora
+    steps:
+    - name: Install host deps
+      run:  sudo dnf install -y nodejs git qemu-user-static-riscv cpio /usr/lib/systemd/systemd-binfmt
+    - uses: actions/checkout@v3
+    - name: Activate systemd-binfmt
+      run: |
+        sudo mount -t binfmt_misc binfmt_misc /proc/sys/fs/binfmt_misc
+        sudo /usr/lib/systemd/systemd-binfmt
+    - name: Build
+      run:  sudo ./build.sh
+    - name: Upload
+      uses: actions/upload-artifact@v4
+      with:
+        path: out
+        name: image
