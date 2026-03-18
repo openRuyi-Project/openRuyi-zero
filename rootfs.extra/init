@@ -1,4 +1,5 @@
 #!/bin/sh
 /bin/busybox --install -s /usr/bin
 mount -a
+exec </dev/console >/dev/console 2>/dev/console
 exec busybox init
