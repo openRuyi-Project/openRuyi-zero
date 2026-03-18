@@ -117,8 +117,16 @@ Note that kernel informational messages may print after this message and make it
 
 ### Graphics
 
+You can start a Weston desktop using:
+
 ```console
 $ seatd-launch -- weston -S wayland-0
+```
+
+This brings up a minimal Weston-based Wayland desktop. Clicking the top left terminal icon brings up weston-terminal. With it, you can run some demos, such as:
+
+```console
+$ eglgears_wayland
 ```
 
 ## Known issues
