@@ -5,6 +5,16 @@ _main() {
 set -e -x -u -o pipefail
 shopt -s nullglob
 
+# Packages to install without dependencies early on
+packages_early=(
+  bash coreutils
+)
+
+# Packages to install without dependencies early on
+force_packages_early=(
+  ca-certificates ca-certificates-mozilla
+)
+
 # Packages to install
 packages=(
   busybox kmod mdevd util-linux
@@ -17,12 +27,17 @@ force_packages=(
   mesa-demos libdecor dbus
 )
 
+# Packages to erase after installing
+erase_packages=(
+  systemd ca-certificates ca-certificates-mozilla
+)
+
 # Packages to erase, ignoring reverse dependencies
 force_erase_packages=(
   icu4c
 )
 
-# Linux packages to build kernel and modules initramfs for
+# Linux packages to build kernel and module addon for
 linux_packages=(linux linux-lts)
 
 # Architecture to use
@@ -93,13 +108,13 @@ remkdir out
 
 remkdir root
 
-# Try to get a sane-ish root first
 dnf5 update "${dnf5args[@]}"
-dnf5 install "${dnf5args[@]}" /bin/sh coreutils
-
-dnf5 install "${dnf5args[@]}" "${packages[@]}"
-forceinstall "${force_packages[@]}"
-rpm --noscripts --nodeps --root $wd/root/ -e "${force_erase_packages[@]}"
+(( ${#packages_early[@]} )) && dnf5 install "${dnf5args[@]}" "${packages_early[@]}"
+(( ${#force_packages_early[@]} )) && forceinstall "${force_packages_early[@]}"
+(( ${#packages[@]} )) && dnf5 install "${dnf5args[@]}" "${packages[@]}"
+(( ${#erase_packages[@]} )) && dnf5 remove "${dnf5args[@]}" "${erase_packages[@]}"
+(( ${#force_packages[@]} )) && forceinstall "${force_packages[@]}"
+(( ${#force_erase_packages[@]} )) && rpm --noscripts --nodeps --root "$wd/root/" -e "${force_erase_packages[@]}"
 
 {
     mkcpio rootfs.extra
