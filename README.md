@@ -96,6 +96,15 @@ And use `final-initramfs.img` instead for booting. As an example, for QEMU, repl
   -initrd final-initramfs.img
 ```
 
+### Other kinds of addons
+
+You can create other kinds of addons using a similar process. For example, some devices may require extra firmware files in `/lib/firmware` to function. You can create a `firmware.cpio` addon with commands such as:
+
+```console
+$ install -Dm 0644 /path/to/lib/firmware/foo/bar.bin fwroot/lib/firmware/foo/bar.bin
+$ ( cd fwroot && find -print0 | cpio -0 -R0:0 -o --format=newc > ../firmware.cpio )
+```
+
 ## Usage after boot
 
 ### Basic usage
