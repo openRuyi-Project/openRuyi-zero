@@ -26,7 +26,7 @@ qemu-system-riscv64 \
   -device virtio-rng-device,rng=rng0 \
   -device virtio-net-device,netdev=usernet \
   -netdev user,id=usernet,hostfwd=tcp::12055-:22 \
-  -display sdl,gl=on -device virtio-gpu-gl-pci -device virtio-vga \
+  -display sdl,gl=on -device virtio-gpu-gl-pci \
   -device qemu-xhci -usb -device usb-kbd -device usb-mouse \
   -serial mon:stdio \
   -kernel {path-to-your-kernel} \
