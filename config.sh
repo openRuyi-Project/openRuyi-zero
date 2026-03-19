@@ -4,7 +4,7 @@ arch=riscv64
 # Linux packages to build kernel and module addon for
 linux_packages=(linux linux-lts)
 
-# Packages to install without dependencies early on
+# Packages to install early on
 packages_early=(
   bash coreutils
 )
