@@ -117,7 +117,15 @@ Note that kernel informational messages may print after this message and make it
 
 ### Graphics
 
-You can start a Weston desktop using:
+You can start a kmscube demo with the command:
+
+```console
+$ kmscube
+```
+
+Note that on early boot, you may need to wait for the graphics kernel drivers to load first.
+
+Alternatively, you can start a Weston desktop using:
 
 ```console
 $ seatd-launch -- weston -S wayland-0
