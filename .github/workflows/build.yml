@@ -23,4 +23,4 @@ jobs:
       uses: christopherhx/gitea-upload-artifact@v4
       with:
         path: out
-        name: image
+        name: output
