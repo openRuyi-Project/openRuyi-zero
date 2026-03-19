@@ -20,6 +20,7 @@ packages=(
   busybox kmod mdevd util-linux
   libudev-zero
   weston seatd mesa-gl mesa-dril
+  kmscube
 )
 
 # Packages to install without dependencies
