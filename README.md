@@ -1,6 +1,16 @@
 # openRuyi Zero
 
-*A minimal openRuyi initramfs*
+*A minimal openRuyi initramfs, with zero unneeded services*
+
+```
+[root@openruyi /]# ps -ef | grep -v '\]$'
+PID   USER     TIME  COMMAND
+    1 root      0:02 busybox init
+   90 root      0:00 -/bin/sh
+   91 root      0:00 busybox init
+  102 root      0:00 ps -ef
+  103 root      0:00 grep -v \]$
+```
 
 ## Features
 
@@ -11,6 +21,7 @@ The openRuyi Zero edition is created to facilitate pre-Silicon SoC bringup. With
 - Busybox init, with zero unneeded services
 - Runs as few programs as possible, giving you a shell as fast as possible
   - mdevd + libudev-zero instead of Systemd udev
+  - Even mdevd is conditional on kernel modules being needed
 - Minimal Weston Wayland environment for graphics stack validation
 
 ## Usage
