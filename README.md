@@ -185,3 +185,7 @@ In addition, binfmt_misc emulation for Linux on 64-bit RISC-V must be available 
 The script will download and install packages from openRuyi to prepare the base initramfs file, as well as kernel and module addons for the openRuyi `linux` and `linux-lts` packages. The output will be stored in the `out/` directory.
 
 The build script requires running as root. Therefore, it is recommended to run the build in a container for improved security and isolation. (Note that Linux kernel 6.7 and later supports isolating binfmt_misc inside containers.)
+
+### Customization
+
+The configurations in `config.sh` allows for customization of the build. Please see comments in `config.sh` for more details.
