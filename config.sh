@@ -11,8 +11,7 @@ packages_early=(
 
 # Packages to install without dependencies early on
 force_packages_early=(
-  # Since we remove these later, force installing these makes the build faster
-  ca-certificates ca-certificates-mozilla
+  dbus
 )
 
 # Packages to install
@@ -21,17 +20,15 @@ packages=(
   libudev-zero # Replaces Systemd's libudev
   weston seatd mesa-gl mesa-dril
   kmscube
+  mesa-demos libdecor
 )
 
 # Packages to install without dependencies
 force_packages=(
-  # These would pull in systemd and its deps otherwise
-  mesa-demos libdecor dbus
 )
 
 # Packages to erase after installing
 erase_packages=(
-  systemd ca-certificates ca-certificates-mozilla
 )
 
 # Packages to erase, ignoring reverse dependencies
