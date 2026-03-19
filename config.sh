@@ -11,19 +11,21 @@ packages_early=(
 
 # Packages to install without dependencies early on
 force_packages_early=(
+  # Since we remove these later, force installing these makes the build faster
   ca-certificates ca-certificates-mozilla
 )
 
 # Packages to install
 packages=(
   busybox kmod mdevd util-linux
-  libudev-zero
+  libudev-zero # Replaces Systemd's libudev
   weston seatd mesa-gl mesa-dril
   kmscube
 )
 
 # Packages to install without dependencies
 force_packages=(
+  # These would pull in systemd and its deps otherwise
   mesa-demos libdecor dbus
 )
 
@@ -34,5 +36,6 @@ erase_packages=(
 
 # Packages to erase, ignoring reverse dependencies
 force_erase_packages=(
+  # Rather large files that are non-critical
   icu4c
 )
