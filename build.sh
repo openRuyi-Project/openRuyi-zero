@@ -87,7 +87,7 @@ forceinstall() {
   for id in "$@"; do
     rpms+=("$id"-*."$arch".rpm)
   done
-  rpm --noscripts --nodeps --root $wd/root/ --ignorearch -i "${rpms[@]}"
+  rpm --noscripts --nodeps --root "$wd/root/" --ignorearch -i "${rpms[@]}"
 }
 
 unpackrpm() {
