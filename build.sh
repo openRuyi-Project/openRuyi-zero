@@ -72,7 +72,7 @@ remkdir out
 
 remkdir root
 
-dnf5 update "${dnf5args[@]}"
+dnf5 clean "${dnf5args[@]}" all
 (( ${#packages_early[@]} )) && dnf5 install "${dnf5args[@]}" "${packages_early[@]}"
 (( ${#force_packages_early[@]} )) && forceinstall "${force_packages_early[@]}"
 (( ${#packages[@]} )) && dnf5 install "${dnf5args[@]}" "${packages[@]}"
