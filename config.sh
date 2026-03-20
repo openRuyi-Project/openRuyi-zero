@@ -19,6 +19,7 @@ packages=(
   busybox kmod mdevd util-linux
   libudev-zero # Replaces Systemd's libudev
   weston seatd mesa-gl mesa-dril
+  vulkan-loader vulkan-tools
   kmscube
   mesa-demos libdecor
 )
