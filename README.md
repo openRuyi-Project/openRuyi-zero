@@ -78,13 +78,13 @@ And use `final-initramfs.img` instead for booting. As an example, for QEMU, repl
 If you use your own kernel that requires modules, it is easy to create a module addon based on that. Within the kernel source tree, after building the kernel and modules, use this command to install modules into the `modroot/` directory:
 
 ```console
-$ make "${makeFlags[@]}" INSTALL_MOD_PATH="$(pwd)/modroot" modules_install
+$ make "${makeFlags[@]}" INSTALL_MOD_PATH="$(pwd)/modroot/usr" modules_install
 ```
 
 If `depmod` was disabled in the previous step, or more modules are added later, it may be necessary to run `depmod` to regenerate module dependency files:
 
 ```console
-$ depmod -b modroot/ "$(make "${makeFlags[@]}" -s kernelrelease)"
+$ depmod -b modroot/usr "$(make "${makeFlags[@]}" -s kernelrelease)"
 ```
 
 After that, pack up the result into an addon:
