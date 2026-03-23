@@ -15,7 +15,7 @@ PID   USER     TIME  COMMAND
 
 ## Features
 
-The openRuyi Zero edition is created to facilitate pre-Silicon SoC bringup. With the constraints of FPGA-based CPU and SoC emulation in mind, openRuyi Zero was made with the following features:
+The openRuyi Zero edition is created to facilitate SoC bringup and kernel development, especially in the pre-Silicon stage. With the constraints of FPGA-based CPU and SoC emulation in mind, openRuyi Zero was made with the following features:
 
 - Pre-built initramfs distribution for easy bootup
 - Bring-your-own-kernel workflow support with support for kernel modules
