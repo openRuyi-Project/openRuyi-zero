@@ -23,6 +23,7 @@ The openRuyi Zero edition is created to facilitate SoC bringup and kernel develo
 - Runs as few programs as possible, giving you a shell as fast as possible
   - mdevd + libudev-zero instead of Systemd udev
 - Minimal Weston Wayland environment for graphics stack validation
+- Customizable build process for adding and removing packages
 
 ## Usage
 
