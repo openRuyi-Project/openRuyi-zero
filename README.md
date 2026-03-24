@@ -41,7 +41,7 @@ qemu-system-riscv64 \
   -display sdl,gl=on -device virtio-gpu-gl-pci \
   -device qemu-xhci -usb -device usb-kbd -device usb-mouse \
   -serial mon:stdio \
-  -kernel {path-to-your-kernel} \
+  -kernel /path/to/your-kernel \
   -initrd /path/to/openruyi-base.cpio.gz
 ```
 
