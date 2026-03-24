@@ -19,6 +19,8 @@ jobs:
       run:  docker build -t buildenv .
     - name: Build
       run:  docker run --rm -v "$(pwd):$(pwd)" -w "$(pwd)" buildenv ./build.sh
+    - name: Smoke test
+      run:  docker run --rm -v "$(pwd):$(pwd)" -w "$(pwd)" buildenv ./smoke-test.tcl
     - name: Upload
       uses: actions/upload-artifact@v7
       with:
