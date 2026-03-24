@@ -23,7 +23,7 @@ jobs:
     - name: Build
       run:  sudo ./build.sh
     - name: Upload
-      uses: christopherhx/gitea-upload-artifact@v4
+      uses: actions/upload-artifact@v4
       with:
         path: out
         name: output
