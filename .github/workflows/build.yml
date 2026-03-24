@@ -11,17 +11,14 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: fedora
     steps:
     - name: Install host deps
-      run:  sudo dnf install -y nodejs git qemu-user-static-riscv cpio /usr/lib/systemd/systemd-binfmt
+      run:  sudo apt install -y qemu-user-static binfmt-support
     - uses: actions/checkout@v3
-    - name: Activate systemd-binfmt
-      run: |
-        sudo mount -t binfmt_misc binfmt_misc /proc/sys/fs/binfmt_misc
-        sudo /usr/lib/systemd/systemd-binfmt
+    - name: Build Docker image
+      run:  docker build -t buildenv .
     - name: Build
-      run:  sudo ./build.sh
+      run:  docker run --rm -v "$(pwd):$(pwd)" -w "$(pwd)" buildenv ./build.sh
     - name: Upload
       uses: actions/upload-artifact@v7
       with:
