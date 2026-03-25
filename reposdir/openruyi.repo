@@ -1,5 +1,5 @@
 [openruyi]
 name=openruyi (riscv64)
 type=rpm-md
-baseurl=https://diamond.oerv.ac.cn//openruyi/riscv64/
+baseurl=https://repo.build.openruyi.cn/openruyi/riscv64/
 enabled=1
