@@ -16,7 +16,7 @@ jobs:
     steps:
     - name: Install host deps
       run:  sudo apt install -y qemu-user-static binfmt-support
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v6
     - name: Build Docker image
       run:  docker build -t buildenv .
     - name: Build
