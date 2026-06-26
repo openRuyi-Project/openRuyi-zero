@@ -107,12 +107,18 @@ for linux in "${linux_packages[@]}"; do
   linux_core_out=out/openruyi-"$linux"-core-vmlinuz-"$kernel_ver"
   remkdir linux-core-install
   unpackrpm "$linux_core" linux-core-install/
-  cp linux-core-install/usr/lib/modules/*/vmlinuz "$linux_core_out"
+  cp linux-core-install/{usr/lib,lib}/modules/*/vmlinuz "$linux_core_out"
   outputs+=("$linux_core_out")
 
   linux_modules_out=out/openruyi-"$linux"-modules-"$kernel_ver".cpio
   remkdir linux-modules-install
   unpackrpm "$linux_modules" linux-modules-install/
+  if ! [[ -d linux-modules-install/usr ]]; then
+    # Handle packages where kernel modules are installed to /lib.
+    # Since most other packages install to /usr/lib, this breaks initramfs concatenation.
+    mkdir linux-modules-install/usr
+    mv linux-modules-install/lib linux-modules-install/usr/lib
+  fi
   depmod -b linux-modules-install/usr "$kernel_ver"
   mkcpio linux-modules-install > "$linux_modules_out"
   padinitramfs "$linux_modules_out"
